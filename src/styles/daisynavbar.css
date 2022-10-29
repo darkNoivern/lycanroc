@@ -21,3 +21,12 @@
 .width13{
     width: 13rem !important;
 }
+
+@media (min-width: 768px) {
+    .rem-when-md {
+        display: none !important;
+    }
+    .reverse-md-display{
+        display: block !important;
+    }
+}
