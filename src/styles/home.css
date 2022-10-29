@@ -11,6 +11,12 @@
     grid-gap: 1rem;
 }
 
+.card-moment{
+    float: right;
+    font-size: 0.7rem;
+    padding-top: 1rem;
+}
+
 /* Screen larger than 600px? 2 column */
 @media (min-width: 600px) {
     .card-setter {

@@ -8,13 +8,15 @@ import {
     query,
     orderBy,
 } from "firebase/firestore";
+import moment from 'moment';
 
 const Home = () => {
 
     const [blogs, setBlogs] = useState([]);
 
     const blogsCollectionRef = collection(db, "blogs");
-    const sortRef = query(blogsCollectionRef, orderBy('createdAt'));
+    const sortRef = query(blogsCollectionRef, orderBy('createdAt', 'desc'));
+
     useEffect(() => {
         onSnapshot(sortRef, (snapshot) => {
             setBlogs(
@@ -38,7 +40,7 @@ const Home = () => {
                                 <div className='cards flexy'>
                                     <div className="card shadow-box-hig custom-card bg-base-100 shadow-xl">
                                         <figure>
-                                        <img src={blog.blogImage} className="image-fixed-height" alt="blog image" />
+                                            <img src={blog.blogImage} className="image-fixed-height" alt="blog image" />
                                         </figure>
                                         <div className="card-body">
                                             <h2 className="card-title">
@@ -46,8 +48,11 @@ const Home = () => {
                                                 <div className="badge badge-secondary">NEW</div>
                                             </h2>
                                             <p>If a dog chews shoes whose shoes does he choose?</p>
-                                            <div className="card-actions justify-end">
+                                            <div className="card-actions justify-between">
                                                 <button className="badge p-4 badge-primary">Open Blog</button>
+                                                <div className='text-primary card-moment'>
+                                                    {moment(blog.createdAt.toDate()).calendar()}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
