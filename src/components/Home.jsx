@@ -9,6 +9,7 @@ import {
     orderBy,
 } from "firebase/firestore";
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -49,7 +50,9 @@ const Home = () => {
                                             </h2>
                                             <p>If a dog chews shoes whose shoes does he choose?</p>
                                             <div className="card-actions justify-between">
-                                                <button className="badge p-4 badge-primary">Open Blog</button>
+                                                <Link 
+                                                exact to={`/blog/${blog.id}`}
+                                                className="badge p-4 badge-primary">Open Blog</Link>
                                                 <div className='text-primary card-moment'>
                                                     {moment(blog.createdAt.toDate()).calendar()}
                                                 </div>
